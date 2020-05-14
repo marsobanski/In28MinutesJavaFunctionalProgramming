@@ -1,6 +1,7 @@
 package programming;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FP02Functional {
 
@@ -8,8 +9,18 @@ public class FP02Functional {
 
         List<Integer> numbers = List.of(12, 9, 13, 4, 6, 2, 4, 12, 15);
 
-      int sum = addListFunctional(numbers);
-        System.out.println(sum);
+        List<Integer> doubledNumbers = squaredList(numbers);
+
+//      int sum = addListFunctional(numbers);
+//        System.out.println(sum);
+
+        System.out.println(doubledNumbers);
+    }
+
+    private static List<Integer> squaredList(List<Integer> numbers) {
+        return numbers.stream()
+                .map(n -> n * n)
+                .collect(Collectors.toList());
     }
 
     private static int sum (int aggregate, int nextNumber) {

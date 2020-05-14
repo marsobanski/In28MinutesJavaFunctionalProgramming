@@ -2,7 +2,7 @@ package programming;
 
 import java.util.List;
 
-public class FP01FunctionalExercise {
+public class FP01Exercise {
 
     public static void main(String[] args) {
 
