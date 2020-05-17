@@ -24,18 +24,23 @@ public class FP03FunctionalInterface {
         Function<Integer, Integer> squareFunctions = x -> x * x;
         Function<Integer, Integer> squareFunctions2 = new Function<Integer, Integer>() {
             @Override
-            public Integer apply(Integer integer) {
-                return null;
+            public Integer apply(Integer x) {
+                return x * x;
             }
         };
 
-
         Consumer<Integer> sysoutConsumer = System.out::println;
+        Consumer<Integer> sysoutConsumer2 = new Consumer<Integer>() {
+            @Override
+            public void accept(Integer x) {
+                System.out.println(x);
+            }
+        };
 
         numbers.stream()
-                .filter(x -> x % 2 == 0)
-                .map(x -> x * x)
-                .forEach(System.out::println);
+                .filter(isEvenPredicate)
+                .map(squareFunctions)
+                .forEach(sysoutConsumer);
 
     }
 }
