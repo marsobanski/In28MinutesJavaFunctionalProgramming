@@ -1,6 +1,7 @@
 package programming;
 
 import java.util.List;
+import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -22,6 +23,7 @@ public class FP03FunctionalInterface {
         };
 
         Function<Integer, Integer> squareFunctions = x -> x * x;
+        Function<Integer, String> stringOutputFunction = x -> x + "";
         Function<Integer, Integer> squareFunctions2 = new Function<Integer, Integer>() {
             @Override
             public Integer apply(Integer x) {
@@ -29,11 +31,19 @@ public class FP03FunctionalInterface {
             }
         };
 
-        Consumer<Integer> sysoutConsumer = System.out::println;
+        Consumer<Integer> sysoutConsumer = x -> System.out.println(x);
         Consumer<Integer> sysoutConsumer2 = new Consumer<Integer>() {
             @Override
             public void accept(Integer x) {
                 System.out.println(x);
+            }
+        };
+
+        BinaryOperator<Integer> sumBinaryOperation = (x, y) -> x + y;
+        BinaryOperator<Integer> sumBinaryOperation2 = new BinaryOperator<Integer>() {
+            @Override
+            public Integer apply(Integer a, Integer b) {
+                return a + b;
             }
         };
 
